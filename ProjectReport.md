@@ -46,7 +46,7 @@ Below, I offer a report of the work performed in this project, describing the fu
 
 In this project I set out to investigate how vehicle CO2 (tailpipe) emissions might be predicted as a function of properties of the vehicle using supervised machine learning techniques. Properties of the vehicle include the type of powertrain (e.g. Internal Combustion Engine (ICE), or Battery Electric Vehicle (BEV)) and the size of the engine.
 
-I use Python and MySQL to perform cleansing, statistical analysis, and visualisation of UK government vehicle emissions data. I train XGBoost, Decision Tree, and Linear Regression models on the preprocessed data, and compare the performances of each model. I then produce several XGBoost models with hyperparameters tuned using Grid Search, Random Search, HYPEROPT, and Trieste, and I compare the results and tuning speeds of each method. Finally, I review two of the models by investigating their accuracies, error distributions, feature importances, and their input requirements.
+I use Python and MySQL to perform cleansing, statistical analysis, and visualisation of UK government vehicle emissions data. I train XGBoost, Decision Tree, and Linear Regression models on the preprocessed data, and compare the performances of each model. I then produce several XGBoost models with hyperparameters tuned using Grid Search, Random Search, [Hyperopt](https://github.com/hyperopt/hyperopt), and [Trieste](trieste_citation.txt), and I compare the results and tuning speeds of each method. Finally, I review two of the models by investigating their accuracies, error distributions, feature importances, and their input requirements.
 
 I primarily chose to undertake this project to develop my own skills in data sourcing, data cleansing, and a variety of supervised machine learning techniques. I also hope that this project might serve as a learning resource for others aspiring to study machine learning.
 
@@ -454,7 +454,7 @@ I train and compare 6 XGB models attained through the following tuning technique
 
 2. Random Search - 8748 Iterations (More Refined Search Space) - 3-Fold CV
 
-3. Hyperopt - 100 Iterations (Same Search Range as Random Search) - 5-Fold CV
+3. Hyperopt - 100 Iterations (Same Search Range as Random Search) - 10-Fold CV
 
 4. Hyperopt - 300 Iterations (More Hyperparameters) - 10-Fold CV
 

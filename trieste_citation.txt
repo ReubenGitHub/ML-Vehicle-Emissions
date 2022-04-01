@@ -1,0 +1,1 @@
+Berkeley, J., Moss, H. B., Artemev, A., Pascual-Diaz, S., Granta, U., Stojic, H., Couckuyt, I., Qing, J., Loka, N., Paleyes, A., Ober, S. W., & Picheny, V. (2022). Trieste (Version 0.10.0) [Computer software]. https://github.com/secondmind-labs/trieste
