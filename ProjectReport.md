@@ -372,10 +372,10 @@ I train and compare the accuracies of the following 4 models, without tuning hyp
 Before model training, I shuffle the data and then split into training (80% of data) and testing (20% of data) sets, using a fixed seed for reproducibility. In training each model on the training set, I will provide the following hyperparameters as applicable...  
 
 ```python
-    objective = reg:squarederror,
-    learning_rate = 0.1,
-    max_depth = 10,
-    n_estimators = 50
+objective = reg:squarederror,
+learning_rate = 0.1,
+max_depth = 10,
+n_estimators = 50
 ```
 The testing set acts as a hold-out to emulate real-world data, and is used as a final assessment for each model once trained.
 
@@ -446,7 +446,7 @@ Hyperopt is another library which can be used for solving Bayesian optimization 
 
 ### 6.3 XGB Ordinal Encoding
 
-In this stage, I use [trainTunedOrdinal.py](src/models/trainTunedOrdinal.py) to train XGBoost models with hyperparameter tuning using Grid Search, Random Search, Hyperopt, and Trieste, and then save the models in results/models/trained. The purpose of this stage is to compare the tuning speeds and resulting accuracies from the different tuning techniques. 
+In this stage, I use [trainTunedOrdinal.py](src/models/trainTunedOrdinal.py) to train XGBoost models with hyperparameter tuning using Grid Search, Random Search, Hyperopt, and Trieste, and then save the models in results/models/tuned. The purpose of this stage is to compare the tuning speeds and resulting accuracies from the different tuning techniques. 
 
 I train and compare 6 XGB models attained through the following tuning techniques:  
 
@@ -484,7 +484,7 @@ I review the model fitted using Trieste with more hyperparameters (method 6) fur
 
 ### 6.4 XGB One-Hot Encoding
 
-In this stage, I use [trainTunedOnehot.py](src/models/trainTunedOnehot.py) to train an XGB model with One-Hot encoding and hyperparameter tuning using Trieste, and save the model in results/models/trained. The purpose of this stage is to compare the accuracy of this XGB model with the accuracy of model 5 in the previous subsection, which uses Ordinal encoding.
+In this stage, I use [trainTunedOnehot.py](src/models/trainTunedOnehot.py) to train an XGB model with One-Hot encoding and hyperparameter tuning using Trieste, and save the model in results/models/tuned. The purpose of this stage is to compare the accuracy of this XGB model with the accuracy of model 5 in the previous subsection, which uses Ordinal encoding.
 
 The procurement of train/test data and the use of cross-validation is the same as in the previous subsection, with 10-fold CV used for both models. I use Trieste to tune the model, allowing 100 evaluations, and I use the same hyperparameter Search Space as method 5. The only difference in setup is the encoding, for fair comparison.
 
@@ -504,7 +504,7 @@ Also worth noting is that tuning hyperparameters took much longer for the One-Ho
 
 ### 6.5 XGB Ordinal Fewer Features
 
-In this stage, I use [trainTunedOrdinalNoMan.py](src/models/trainTunedOrdinalNoMan.py) to train an XGB model with hyperparameter tuning using Trieste, excluding the feature "manufacturer", and save the model in results/models/trained. The purpose of this stage is to compare the accuracy of this XGB model with the accuracy of model 6 in the previous subsection, which includes "manufacturer" as a feature.
+In this stage, I use [trainTunedOrdinalNoMan.py](src/models/trainTunedOrdinalNoMan.py) to train an XGB model with hyperparameter tuning using Trieste, excluding the feature "manufacturer", and save the model in results/models/tuned. The purpose of this stage is to compare the accuracy of this XGB model with the accuracy of model 6 in the previous subsection, which includes "manufacturer" as a feature.
 
 The procurement of train/test data and the use of cross-validation is the same as in the previous subsection, with 10-fold CV used for both models. I use Trieste to tune the model, allowing 300 evaluations, and I use the same expanded hyperparameter Search Space as method 6. The only difference in setup is the exclusion of "manufacturer" in this model, for fair comparison.
 
@@ -524,7 +524,7 @@ I review the NoMan model further in Section 7.
 
 ## 7. Model Review
 
-In this stage, I use [modelReview.py](src/models/modelReview.py) to compare the XGB Ordinal encoding (Trieste-tuned) model and equivalent NoMan model (excludes "manufacturer" from features), and save visualisations in results/models/trained_vis.
+In this stage, I use [modelReview.py](src/models/modelReview.py) to compare the XGB Ordinal encoding (Trieste-tuned) model and equivalent NoMan model (excludes "manufacturer" from features), and save visualisations in results/models/tuned_vis.
 
 I have created several models predicting CO2 emissions of vehicles using a variety of methods and tuning techniques, and I will now review the two models which appear to be the best candidates: the two XGB models with Ordinal encoding and with hyperparameters tuned using Trieste (300 evaludations).
 
@@ -533,10 +533,10 @@ I have created several models predicting CO2 emissions of vehicles using a varie
 * The other utilises the same features except excludes "manufacturer" (the "NoMan" model).
 
 The observed accuracies (R^2, Coefficient of Determination) of these models are:
-    Model           Train Accuracy     Test Accuracy     Test RMSE     Tuning Duration (s)
-    --------------------------------------------------------------------------------------
-    Full model      0.963918           0.956700          11.567392     3120
-    NoMan model     0.961333           0.954035          11.918023     3222
+| Model       | Train Accuracy | Test Accuracy | Test RMSE | Tuning Duration (s) |
+| ----------- | --------------:| -------------:| ---------:| -------------------:|
+| Full model  | 0.963918       | 0.956700      | 11.567392 | 3120                |
+| NoMan model | 0.961333       | 0.954035      | 11.918023 | 3222                |
 
 As discussed in Section 6.5, the models perform approximately equally. As the NoMan model requires less data per example (no information about the manufactuer is required) than the Full model, one may consider using the NoMan model over the Full model to obtain similar performance.
 
@@ -545,10 +545,10 @@ As discussed in Section 6.5, the models perform approximately equally. As the No
 The Prediction Error Distribution graphs visualise the errors of the models across each percentile of the train and test data sets. The distributions can be seen in Fig's 12 and 13 below.
 
 <b>Fig. 12</b>  
-![P.E.D. Full Model](results/models/trained_vis/co2_emissions_gPERkm%20Prediction%20Error%20Distribution%20for%20Full%20Model.png)  
+![P.E.D. Full Model](results/models/tuned_vis/co2_emissions_gPERkm%20Prediction%20Error%20Distribution%20for%20Full%20Model.png)  
 
 <b>Fig. 13</b>  
-![P.E.D. NoMan Model](results/models/trained_vis/co2_emissions_gPERkm%20Prediction%20Error%20Distribution%20for%20NoMan%20Model.png)  
+![P.E.D. NoMan Model](results/models/tuned_vis/co2_emissions_gPERkm%20Prediction%20Error%20Distribution%20for%20NoMan%20Model.png)  
 
 The graphs shows that a small proportion (~20%) of the train/test sets have prediction errors larger than the test RMSEs (11.6 g/km for Full, 11.9 g/km for NoMan). The graphs also shows that the prediction error grows rapidly at the higher percentiles of the data sets, due to significant prediction errors on a small proportion of the data.
 
@@ -580,10 +580,10 @@ The other vehicles in the list appear to be outliers or exceptions to the trends
 The Feature Importance charts visualise the value of each feature to each model, in terms of the improvements in accuracy attained to the branches it is on. The charts can be seen in Fig's 14 and 15 below. 
 
 <b>Fig. 14</b>  
-![Importance Full Model](results/models/trained_vis/Feature%20Importance%20Full%20Model.png) 
+![Importance Full Model](results/models/tuned_vis/Feature%20Importance%20Full%20Model.png) 
 
 <b>Fig. 15</b>  
-![Importance NoMan Model](results/models/trained_vis/Feature%20Importance%20NoMan%20Model.png) 
+![Importance NoMan Model](results/models/tuned_vis/Feature%20Importance%20NoMan%20Model.png) 
 
 <b>Fuel and Powertrain</b>  
 Both charts show that "fuel" and "powertrain" are valuable features. This is not unexpected given the clustering seen in the "VS engine_size_cm3" and "VS power_ps" graphs, and the distinct distributions seen in the "VS fuel" and "VS powertrain" graphs.
