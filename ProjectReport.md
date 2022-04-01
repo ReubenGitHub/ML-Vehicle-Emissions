@@ -48,7 +48,7 @@ In this project I set out to investigate how vehicle CO2 (tailpipe) emissions mi
 
 I use Python and MySQL to perform cleansing, statistical analysis, and visualisation of UK government vehicle emissions data. I train XGBoost, Decision Tree, and Linear Regression models on the preprocessed data, and compare the performances of each model. I then produce several XGBoost models with hyperparameters tuned using Grid Search, Random Search, [Hyperopt](https://github.com/hyperopt/hyperopt), and [Trieste](trieste_citation.txt), and I compare the results and tuning speeds of each method. Finally, I review two of the models by investigating their accuracies, error distributions, feature importances, and their input requirements.
 
-I primarily chose to undertake this project to develop my own skills in data sourcing, data cleansing, and a variety of supervised machine learning techniques. I also hope that this project might serve as a learning resource for others aspiring to study machine learning.
+I primarily chose to undertake this project to develop my own skills in data sourcing, data cleansing, and a variety of supervised machine learning techniques.
 
 One possible benefit from the results of this investigation may be evidence-driven insights into the key aspects of vehicle design that impact CO2 emissions.
 
