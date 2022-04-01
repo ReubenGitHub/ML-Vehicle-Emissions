@@ -168,7 +168,9 @@ Null values in the data set are visualised as a heatmap in Fig. 1 below.
 
 ### 4.2 Data Cleansing
 
-In this stage, I use [dataClean.py](src/data/dataClean.py), which manipulates the "uk_gov_data" table to produce both [sparse](data/intermediate/uk_gov_data_sparse.csv) ("uk_gov_data_sparse") and [dense](data/intermediate/uk_gov_data_dense.csv) ("uk_gov_data_dense") tables to address the points identified in dataInitialiseAnalyse.py.
+In this stage, I use [dataClean.py](src/data/dataClean.py), which manipulates the "uk_gov_data" table to produce both [sparse](data/intermediate/uk_gov_data_sparse.csv) ("uk_gov_data_sparse") and [dense](data/intermediate/uk_gov_data_dense.csv) ("uk_gov_data_dense") tables, which address the points identified in the previous section (dataInitialiseAnalyse.py).
+
+The sparse data set addresses points of interest other than POI 1, 2, and 3, i.e. it maintains the null values: 147 in "transmission", 1 in "engine_size_cm3", 44 in "power_ps". The dense data set is the same except that it addresses all POI's, so contains no null values.
 
 ### 4.3 Outlier Analysis
 
@@ -207,7 +209,7 @@ These outliers can be seen in Fig's 2, 3, and 4 below.
 
 ### 4.4 Data Preprocessing
 
-In this stage, I use [dataPreprocess.py](src/data/dataPreprocess.py), which manipulates the "uk_gov_data_sparse" and "uk_gov_data_dense" table to produce "...preproc" tables, while addressing the outliers identified in dataCleanAnalyse.py.
+In this stage, I use [dataPreprocess.py](src/data/dataPreprocess.py), which manipulates the "uk_gov_data_sparse" and "uk_gov_data_dense" table to produce "...preproc" tables, which address the outliers identified in dataCleanAnalyse.py.
 
 ### 4.5 Correlation Analysis
 
