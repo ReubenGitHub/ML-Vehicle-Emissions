@@ -4,7 +4,7 @@ In this project, I investigate the recorded CO2 emissions (WLTP) of 6756 vehicle
 
 The data was obtained via the following UK government link:  
 https://carfueldata.vehicle-certification-agency.gov.uk/downloads/default.aspx  
-Note that the data at this link is subject to change. The raw data as I obtained it can be found in the data/raw directory [here](data/Euro_6_latest.csv).
+Note that the data at this link is subject to change. The raw data as I obtained it can be found in the data/raw directory [here](data/raw/Euro_6_latest.csv).
 
 In the [Project Report file](ProjectReport.md), I offer a report of the work performed in this project, describing the fundamental stages and key results.
 
