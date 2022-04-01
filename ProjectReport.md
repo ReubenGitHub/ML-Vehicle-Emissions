@@ -56,7 +56,7 @@ A possible real-world application of the models produced could be data (entry) v
 
 ## 2. Getting Started
 
-It is not required to execute any of the code in this repository in order to obtain and review the results of this investigation. All the key results are described here in this README.md file, with some other secondary results being shown in the various "..._vis" folders of the project.
+It is not required to execute any of the code in this repository in order to obtain and review the results of this investigation. The stages and key results are described in this ProjectReport.md file, with some other secondary results being shown in the various "..._vis" folders of the project.
 
 If you wish to follow along in a practical sense, for example by reproducing visualisations or training models, or if you wish to run any of the code for any other reason, then the Python dependencies are listed in the [requirements.txt](requirements.txt) file.
 
